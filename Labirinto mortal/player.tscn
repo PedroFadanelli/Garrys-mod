@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy3moh2tgyyk5"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_untum"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tdu3j"]
+height = 1.89559
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kyvou"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_untum")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0184, 0, 0, 0, 1.09987, 0, 0, 0, 1.04748, 0.0243374, 1.23262, -0.158945)
+shape = SubResource("CapsuleShape3D_tdu3j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0313486, 1.22663, -0.170513)
+mesh = SubResource("CapsuleMesh_kyvou")
+
+[node name="CameraBase" type="Node3D" parent="."]
+transform = Transform3D(-0.999683, 0, -0.0251649, 0, 1, 0, 0.0251649, 0, -0.999683, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraBase"]
+transform = Transform3D(-0.996815, -0.0240764, 0.0760313, 0.00407616, 0.936716, 0.350065, -0.0796481, 0.34926, -0.933635, 0.161807, 2.89167, -3.52699)
+fov = 72.8005
