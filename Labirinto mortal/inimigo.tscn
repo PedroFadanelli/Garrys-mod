@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cla3i82c28dui"]
+
+[ext_resource type="Script" path="res://inimigo.gd" id="1_y7gk6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaesf"]
+albedo_color = Color(1, 0.141176, 0.0431373, 1)
+metallic = 0.95
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vxkqj"]
+material = SubResource("StandardMaterial3D_eaesf")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vm7oe"]
+
+[node name="Inimigo" type="CharacterBody3D"]
+script = ExtResource("1_y7gk6")
+
+[node name="MeMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_vxkqj")
+
+[node name="Colisão" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vm7oe")
+
+[node name="tempoDeAtaque" type="Timer" parent="."]
