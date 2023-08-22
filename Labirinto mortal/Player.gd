@@ -2,10 +2,12 @@ extends CharacterBody3D
 
 class_name Player
 
-const SPEED = 5.0
-var CORRER = 6.0
+const SPEED = 20
+var CORRER = 12
 const JUMP_VELOCITY = 6.5
 const GRAVITY = 12.8
+
+signal player_hit
 
 
 @onready var camerabase = $CameraBase
@@ -17,7 +19,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		camerabase.rotation.x -= deg_to_rad(event.relative.y * 1)
-		camerabase.rotation.x = clamp(camerabase.rotation.x, deg_to_rad(15), deg_to_rad(45))
+		camerabase.rotation.x = clamp(camerabase.rotation.x, deg_to_rad(-10), deg_to_rad(45))
 		rotation.y -= deg_to_rad(event.relative.x * 1)
 
 func _physics_process(delta):
@@ -52,3 +54,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+func hit():
+	emit_signal("player_hit")
